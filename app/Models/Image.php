@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Post extends Model
+class Image extends Model
 {
     use HasFactory;
 
@@ -17,7 +16,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'url',
     ];
 
     /**
@@ -29,13 +28,8 @@ class Post extends Model
         'id' => 'integer',
     ];
 
-    public function comments(): MorphMany
+    public function imageable(): MorphTo
     {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    public function image(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphTo();
     }
 }

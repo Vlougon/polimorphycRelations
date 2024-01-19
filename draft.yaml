@@ -4,16 +4,23 @@ models:
     name: string
     relationships:
       morphMany: Comment
+      morphOne: Image
 
   Video:
     name: string
     relationships:
       morphMany: Comment
+      morphOne: Image
 
   Comment:
     body: string
     relationships:
       morphTo: Commentable
+
+  Image:
+    url: string
+    relationships:
+      morphTo: Imageable
 
 controllers:
   # ...
