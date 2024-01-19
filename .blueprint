@@ -1,0 +1,17 @@
+created:
+    - database/factories/PostFactory.php
+    - database/factories/VideoFactory.php
+    - database/factories/CommentFactory.php
+    - database/migrations/2024_01_19_214326_create_posts_table.php
+    - database/migrations/2024_01_19_214327_create_videos_table.php
+    - database/migrations/2024_01_19_214328_create_comments_table.php
+    - app/Models/Post.php
+    - app/Models/Video.php
+    - app/Models/Comment.php
+    - database/seeders/PostSeeder.php
+    - database/seeders/VideoSeeder.php
+models:
+    User: {  }
+    Post: { name: string, relationships: { morphMany: Comment } }
+    Video: { name: string, relationships: { morphMany: Comment } }
+    Comment: { body: string, relationships: { morphTo: Commentable } }
